@@ -8,5 +8,5 @@ rzzx_logstash_service:
     XPACK_MONITORING_ELASTICSEARCH_URL: "10.10.15.76:9201"
   volumes:
     - ./logstash_config/conf.d/:/usr/share/logstash/pipeline/
-    - /home/joyner-lu/docker/rzzx_logstash_docker_compose/app.log:/var/log/app.log
+    - ./app.log:/var/log/app.log
     - ./logstash_config/patterns/:/usr/share/logstash/patterns/ 
