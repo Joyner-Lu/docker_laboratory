@@ -1,0 +1,29 @@
+# contents of ./patterns/postfix:
+TRACE_ID ([0-9A-Za-z]{32})?
+SPACE_DASH -%{SPACE}|%{SPACE}-%{SPACE}|-
+THREAD_ID [a-zA-Z0-9.\(:\)/#_\s-]*
+APP [a-zA-Z]{3,15}
+SID (([a-zA-Z]+\.){4,5}[a-zA-Z]+)?
+TID ([0-9a-zA-Z]{36})?
+#yyyy-MM-dd HH:mm:ss
+MY_TIMESTAMP [1-2][0-9][0-9][0-9]-([1][0-2]|0?[1-9])-([12][0-9]|3[01]|0?[1-9]) ([01][0-9]|[2][0-3]):[0-5][0-9]:[0-5][0-9]
+#20位数字，用于显示djxh
+DJXH (\d{20})?
+#性能聚合日志funcId
+FUNC_ID %{JAVACLASS}|%{URIPATH}
+#日志生成类名，包含500jsp
+LOG_PRINTER (?:[a-zA-Z0-9-]+\.?)+[A-Za-z0-9$]+
+#性能聚合日志主题
+PERFORMANCE_TOPIC RPC|URL|SERVICE
+#外部系统交易异常类型
+EXP_TYPE BIZERR|TECHERR|SLOWWARN
+#性能聚合日志其它主题
+PERFORMANCE_OT [0-9a-zA-Z]{3,10}
+#自定义的HOSTORIPPORT
+ELK_HOSTPORT (%{IPORHOST}:%{POSINT})?
+#手工分组，如果日志中某段的正则式难以写出，则可用#[]#包括，然后再过滤
+MANUALGROUP \#\[((?!\]\#).)*\]\#
+#所有内容，包括换行
+MSG_WITH_BR ([\w\W])+
+#mongoTempate 公用API名称
+MONGO_METHOD (getCollectionName|executeCommand|executeQuery|execute|createCollection|getCollection|collectionExists|dropCollection|indexOps|findOne|exists|find|findById|geoNear|findAndModify|findAndRemove|count|insert|insertAll|save|doSaveVersioned|upsert|updateFirst|updateMulti|remove|findAll|mapReduce|group|aggregate|findAllAndRemove|getCollectionNames)?

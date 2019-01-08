@@ -1,0 +1,12 @@
+rzzx_logstash_service:
+  container_name: rzzx_logstash
+  image: rzzx_logstash
+  ports:
+    - "5045:5044" 
+  environment:
+    XPACK_MONITORING_ENABLED: "true"
+    XPACK_MONITORING_ELASTICSEARCH_URL: "10.10.15.76:9201"
+  volumes:
+    - ./logstash_config/conf.d/:/usr/share/logstash/pipeline/
+    - /home/joyner-lu/docker/rzzx_logstash_docker_compose/app.log:/var/log/app.log
+    - ./logstash_config/patterns/:/usr/share/logstash/patterns/ 
