@@ -1,0 +1,8 @@
+filebeat_service:
+  container_name: filebeat
+  image: docker.elastic.co/beats/filebeat:6.4.2
+  volumes:
+   - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+   - /var/lib/docker/containers:/var/lib/docker/containers:ro
+   - /var/run/docker.sock:/var/run/docker.sock:ro
+   - /home/joyner/taxcp/:/home/joyner/taxcp/:ro

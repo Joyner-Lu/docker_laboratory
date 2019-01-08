@@ -1,0 +1,7 @@
+web:
+  image: some-content-nginx
+  volumes:
+   - ./access.log:/var/log/nginx/access.log
+   - ./error.log:/var/log/nginx/error.log
+  ports:
+   - "80:80"
