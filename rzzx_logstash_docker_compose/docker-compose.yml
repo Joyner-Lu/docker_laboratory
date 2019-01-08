@@ -6,6 +6,7 @@ rzzx_logstash_service:
   environment:
     XPACK_MONITORING_ENABLED: "true"
     XPACK_MONITORING_ELASTICSEARCH_URL: "10.10.15.76:9201"
+    PIPELINE_BATCH_SIZE: 5000
   volumes:
     - ./logstash_config/conf.d/:/usr/share/logstash/pipeline/
     - ./app.log:/var/log/app.log
