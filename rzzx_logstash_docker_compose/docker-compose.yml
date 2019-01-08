@@ -3,11 +3,8 @@ rzzx_logstash_service:
   image: rzzx_logstash
   ports:
     - "5045:5044" 
-  environment:
-    XPACK_MONITORING_ENABLED: "true"
-    XPACK_MONITORING_ELASTICSEARCH_URL: "10.10.15.76:9201"
-    PIPELINE_BATCH_SIZE: 5000
+  #environment:
   volumes:
+    - ./logstash_config/config/logstash.yml:/usr/share/logstash/config/logstash.yml
     - ./logstash_config/conf.d/:/usr/share/logstash/pipeline/
-    - ./app.log:/var/log/app.log
     - ./logstash_config/patterns/:/usr/share/logstash/patterns/ 
