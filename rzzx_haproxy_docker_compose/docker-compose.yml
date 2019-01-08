@@ -1,0 +1,8 @@
+rzzx_haproxy_service:
+  container_name: rzzx_haproxy
+  image: rzzx_haproxy
+  ports:
+    - "8013:8013" 
+  #environment:
+  volumes:
+    - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
